@@ -3,71 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101827">
-  <title>Renova AI Bridge</title>
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="Renova Office AI Bridge: a free, private workspace for passing tasks and results between AI assistants. Renewing the Way You Work.">
+  <title>Renova Office · AI Bridge</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238bd5ca'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='800' text-anchor='middle' fill='%230b1724' font-family='sans-serif'%3ER%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header class="topbar">
-    <a class="brand" href="#"><span class="brand-mark">R</span><span>RENOVA <b>AI BRIDGE</b><small>One workspace. Two AI assistants.</small></span></a>
-    <div class="status"><span class="status-dot"></span> Local workspace</div>
+    <a class="brand" href="#top" aria-label="Renova Office AI Bridge, top of page">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>RENOVA <b>OFFICE</b><small>Renewing the Way You Work.</small></span>
+    </a>
+    <nav aria-label="Page sections">
+      <a href="#how">How it works</a>
+      <a href="#workspace">Workspace</a>
+      <a href="#team">Team</a>
+    </nav>
   </header>
 
-  <main class="shell">
-    <section class="intro">
-      <p class="eyebrow">RENOVA OFFICE · AI TEAM ROOM</p>
+  <main id="main" class="shell">
+    <section class="intro" id="top">
+      <p class="eyebrow">RENOVA OFFICE · AI BRIDGE</p>
       <h1>Put your AI team<br><span>on the same page.</span></h1>
-      <p class="lede">Draft a task for ChatGPT, pass it to Claude, bring Claude’s response back, and keep the project discussion in one place.</p>
-      <div class="notice"><strong>Prototype mode:</strong> this version uses copy-and-paste. It does not secretly or automatically connect to either AI service, and it needs no API key.</div>
+      <p class="lede">Write one task, hand it to an assistant, bring the answer back, and keep the whole discussion in one place. Free, private, and no account needed.</p>
+      <div class="notice"><strong>Copy-and-paste workspace:</strong> this page does not connect to ChatGPT, Claude or any other AI service, and it needs no API key. You move the text between assistants yourself.</div>
     </section>
 
-    <section class="workspace">
-      <div class="panel task-panel">
-        <div class="panel-heading"><div><span class="step">01</span><h2>Shared task</h2></div><span class="pill">Project brief</span></div>
-        <label for="task">What should the AI team work on?</label>
-        <textarea id="task" rows="4" placeholder="Example: Review the RENOVA OFFICE website and suggest improvements without adding paid services."></textarea>
+    <section class="how" id="how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ol class="steps">
+        <li><b>Describe the task.</b> Save a shared brief below.</li>
+        <li><b>Hand off.</b> Copy the handoff and paste it into your assistant's own chat.</li>
+        <li><b>Bring it back.</b> Paste the answer here, then copy it to the next assistant for review.</li>
+      </ol>
+    </section>
+
+    <section class="workspace" id="workspace" aria-label="Shared workspace">
+      <div class="panel">
+        <div class="panel-heading"><div><span class="step" aria-hidden="true">01</span><h2>Shared task</h2></div><span class="pill">Project brief</span></div>
+        <label for="task">What should the team work on?</label>
+        <textarea id="task" rows="4" placeholder="Example: Review the Renova Office website and suggest improvements without adding paid services."></textarea>
         <div class="row">
-          <button class="button button-primary" id="saveTask">Save task</button>
-          <button class="button button-quiet" id="clearThread">Clear workspace</button>
+          <button type="button" class="button button-primary" id="saveTask">Save task</button>
+          <button type="button" class="button button-quiet" id="clearThread">Clear workspace</button>
         </div>
       </div>
 
       <div class="columns">
-        <section class="panel assistant-panel">
+        <section class="panel" aria-labelledby="gpt-title">
           <div class="assistant-title">
-            <div class="avatar avatar-chatgpt">G</div>
-            <div><h2>ChatGPT</h2><p>Planner · reviewer · coordinator</p></div>
+            <div class="avatar avatar-chatgpt" aria-hidden="true">GPT</div>
+            <div><h2 id="gpt-title">ChatGPT</h2><p>Planner · reviewer · coordinator</p></div>
           </div>
-          <label for="chatgptNote">ChatGPT’s note / instructions</label>
-          <textarea id="chatgptNote" rows="7" placeholder="Write the plan or instructions you want to hand to Claude. You can copy ChatGPT’s answer from your ChatGPT conversation and paste it here."></textarea>
-          <button class="button button-primary full" id="copyToClaude">Copy handoff to Claude ↗</button>
-          <p class="hint">Open your Claude conversation, paste the handoff, and ask Claude to respond with its findings.</p>
+          <label for="chatgptNote">ChatGPT's notes / instructions</label>
+          <textarea id="chatgptNote" rows="7" placeholder="Paste ChatGPT's plan or review here. It will be included in the handoff to Claude."></textarea>
+          <button type="button" class="button button-primary full" id="copyToClaude">Copy handoff for Claude</button>
+          <p class="hint">Open your Claude conversation, paste the handoff, and ask for findings.</p>
         </section>
 
-        <section class="panel assistant-panel">
+        <section class="panel" aria-labelledby="claude-title">
           <div class="assistant-title">
-            <div class="avatar avatar-claude">C</div>
-            <div><h2>Claude</h2><p>Builder · implementer · tester</p></div>
+            <div class="avatar avatar-claude" aria-hidden="true">C</div>
+            <div><h2 id="claude-title">Claude</h2><p>Builder · implementer · tester</p></div>
           </div>
-          <label for="claudeReply">Paste Claude’s response</label>
-          <textarea id="claudeReply" rows="7" placeholder="Paste Claude’s response here so it stays with this task."></textarea>
+          <label for="claudeReply">Claude's response</label>
+          <textarea id="claudeReply" rows="7" placeholder="Paste Claude's response here so it stays with this task."></textarea>
           <div class="row">
-            <button class="button button-primary" id="saveClaude">Save response</button>
-            <button class="button button-quiet" id="copyReply">Copy response</button>
+            <button type="button" class="button button-primary" id="saveClaude">Save response</button>
+            <button type="button" class="button button-quiet" id="copyReply">Copy response</button>
           </div>
-          <p class="hint">Then return to ChatGPT and paste Claude’s response for review or the next step.</p>
+          <p class="hint">Then return to ChatGPT and paste the response for review.</p>
         </section>
       </div>
 
-      <section class="panel timeline-panel">
-        <div class="panel-heading"><div><span class="step">02</span><h2>Team activity</h2></div><span class="pill" id="saveStatus">Saved in this browser</span></div>
-        <div id="timeline" class="timeline"><div class="empty-state">Your saved task and handoffs will appear here.</div></div>
+      <section class="panel" aria-labelledby="activity-title">
+        <div class="panel-heading"><div><span class="step" aria-hidden="true">02</span><h2 id="activity-title">Team activity</h2></div><span class="pill" id="saveStatus" role="status">Saved in this browser</span></div>
+        <ul id="timeline" class="timeline"><li class="empty-state">Your saved task and handoffs will appear here.</li></ul>
       </section>
     </section>
 
-    <footer><span>RENOVA OFFICE</span><span>Built for a low-cost, human-controlled workflow.</span></footer>
+    <section class="team" id="team" aria-labelledby="team-title">
+      <h2 id="team-title">The team</h2>
+      <ul class="team-grid">
+        <li><b>Claude</b><span>Available now</span></li>
+        <li><b>ChatGPT</b><span>Available now</span></li>
+        <li class="soon"><b>Gemini</b><span class="badge">Coming Soon</span></li>
+        <li class="soon"><b>Grok</b><span class="badge">Coming Soon</span></li>
+      </ul>
+      <p class="hint">Dedicated Gemini and Grok panels are not built yet. Until then you can paste any assistant's text into the ChatGPT notes box.</p>
+    </section>
+
+    <noscript><p class="notice">This workspace needs JavaScript to save and copy text.</p></noscript>
+
+    <footer>
+      <span>RENOVA OFFICE</span>
+      <span>Privacy: everything stays in this browser. Don't paste passwords, API keys or confidential data.</span>
+    </footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

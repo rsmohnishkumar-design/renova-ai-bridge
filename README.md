@@ -1,4 +1,6 @@
-# Renova AI Bridge
+# Renova Office · AI Bridge
+
+*Renewing the Way You Work.*
 
 A static, no-cost prototype for coordinating work between ChatGPT and Claude.
 
@@ -20,3 +22,16 @@ This prototype stores task text and handoff history in the browser's `localStora
 
 ## Future automatic integration
 True AI-to-AI communication requires a backend/serverless function and API access for each provider. Never place API keys in browser JavaScript or a public GitHub repository. API charges may apply separately from chat subscriptions.
+
+## Status
+| Feature | Status |
+|---|---|
+| Shared task, ChatGPT notes, Claude response, activity log | Available |
+| Copy handoff / copy response | Available |
+| Gemini and Grok panels | Coming Soon |
+| Automatic AI-to-AI messaging | Not built (needs a backend and paid API access) |
+
+## Editing (beginner guide)
+- Text and layout: `index.html`. Colors and spacing: `style.css` (colors are at the top in `:root`). Behavior: `script.js`.
+- No build step and no dependencies. Edit a file, commit, and GitHub Pages republishes in about a minute.
+- To mark a new feature as unfinished, add a `<span class="badge">Coming Soon</span>` next to it.
