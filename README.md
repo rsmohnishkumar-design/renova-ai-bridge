@@ -1,37 +1,34 @@
-# Renova Office · AI Bridge
+# Renova AI Bridge
 
-*Renewing the Way You Work.*
+*Your AI Team. One Control Room.* — part of Renova Office, "Renewing the Way You Work."
 
-A static, no-cost prototype for coordinating work between ChatGPT and Claude.
+A free, static web page (HTML, CSS, vanilla JavaScript) with two modes. It works on GitHub Pages and needs no backend, API keys or paid services.
 
-## Important limitation
-This prototype does **not** connect directly to the ChatGPT or Claude APIs. You copy a handoff into Claude, then paste Claude's response back into this page or into ChatGPT. It requires no API keys and sends no content to a server.
+## Modes
+**Manual Relay Mode** — a shared task and notes, plus one panel each for ChatGPT, Claude, Gemini and Grok. Prepare a prompt per assistant, copy it into that assistant's own chat, paste its real reply back, and send a reply on to another assistant as a prepared prompt. Everything you save is tagged "ENTERED MANUALLY BY YOU" with a timestamp.
 
-## Run locally
-Open `index.html` in a modern browser. Clipboard buttons work best on HTTPS or localhost. If clipboard access is blocked, the page displays a manual copy dialog.
+**Simulation Mode** — type an app idea (for example "Create an online invoice generator") and a scripted "development team" discusses it in four roles: ChatGPT (Product Analyst), Claude (Lead Developer), Gemini (UX & Design Reviewer), Grok (Risk Reviewer). Start, Pause, Resume and Reset are available. It ends with a result panel: agreed requirements, decisions, app structure, development steps and, for invoice and record-style ideas, a basic working starter app with a live preview.
 
-## Publish with GitHub Pages
-1. Create a new public repository, for example `renova-ai-bridge`.
-2. Upload `index.html`, `style.css`, `script.js`, and `README.md` to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**, choose `main` and `/(root)`, then save.
-5. Open the published URL shown by GitHub Pages.
+> SIMULATION — AI RESPONSES ARE GENERATED LOCALLY OR PREWRITTEN; NO REAL AI SERVICES ARE CONNECTED.
+
+The simulation is rule-based text built by `simulation.js` from your idea. It is not ChatGPT, Claude, Gemini or Grok, none of them took part, and the generated starter app is deliberately basic, not a finished product.
+
+## Not supported
+Automatic messaging with real AI services. There is no browser automation, scraping, account access or API integration, by design.
 
 ## Privacy
-This prototype stores task text and handoff history in the browser's `localStorage` on the device where it is used. Clearing browser site data or using another browser/device may remove or separate that history. Do not paste passwords, API keys, or confidential information.
+Manual Relay content (task, notes, prompts, saved responses) is stored in this browser's `localStorage` only. Nothing is sent anywhere. Other browsers or devices won't see it, and clearing site data deletes it. **Clear Conversation** deletes saved responses; **Reset Workspace** deletes everything. Simulation content is not saved. Don't paste passwords or confidential information.
 
-## Future automatic integration
-True AI-to-AI communication requires a backend/serverless function and API access for each provider. Never place API keys in browser JavaScript or a public GitHub repository. API charges may apply separately from chat subscriptions.
+## Files
+- `index.html`, `style.css` — page and styles
+- `app.js` — interface, Manual Relay, simulation playback
+- `simulation.js` — local simulation engine and starter-app generator
+- `test-simulation.js` — run `node test-simulation.js` to check the engine
 
-## Status
-| Feature | Status |
-|---|---|
-| Shared task, ChatGPT notes, Claude response, activity log | Available |
-| Copy handoff / copy response | Available |
-| Gemini and Grok panels | Coming Soon |
-| Automatic AI-to-AI messaging | Not built (needs a backend and paid API access) |
+## Deploy on GitHub Pages (free)
+1. Merge the branch into `main` (or choose this branch in the next step).
+2. Repository **Settings → Pages → Build and deployment → Deploy from a branch**.
+3. Pick the branch and `/(root)`, then Save. The site URL appears after about a minute.
 
 ## Editing (beginner guide)
-- Text and layout: `index.html`. Colors and spacing: `style.css` (colors are at the top in `:root`). Behavior: `script.js`.
-- No build step and no dependencies. Edit a file, commit, and GitHub Pages republishes in about a minute.
-- To mark a new feature as unfinished, add a `<span class="badge">Coming Soon</span>` next to it.
+No build step. Edit a file, commit, and Pages republishes. Colours are at the top of `style.css`. New app types for the simulation are plain data entries in `simulation.js`.
