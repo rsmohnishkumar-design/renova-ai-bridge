@@ -203,7 +203,7 @@ function renderSim() {
   const feed = $("simFeed"); feed.textContent = "";
   if (!shown.length) feed.append(el("li", "empty", "Enter an app idea and press Start. The simulated team will discuss it here."));
   shown.forEach(m => feed.append(msgItem(m, false)));
-  if (shown.length) feed.lastElementChild.scrollIntoView({ block: "nearest" });
+  feed.scrollTop = feed.scrollHeight;
   const done = total && sim.idx >= total, active = sim.plan && !done;
   let status = "Ready";
   if (sim.playing) { const next = sim.plan.script[sim.idx]; status = `Playing · ${next ? byId(next.ai).name + " (simulated) is replying" : ""}`; }

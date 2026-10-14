@@ -112,3 +112,4 @@ pre.code{background:#0b1322;border:1px solid var(--line);border-radius:10px;padd
 .preview{width:100%;height:520px;border:1px solid var(--line);border-radius:12px;background:#fff;margin:10px 0}
 details{margin-top:8px}summary{cursor:pointer;color:var(--accent);padding:6px 0}
 .modepill{max-width:100%}
+@media(max-width:1000px){.feed{max-height:none;overflow:visible}}
