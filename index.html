@@ -64,9 +64,30 @@
     <div id="simView" hidden>
       <section class="panel" aria-labelledby="sim-title">
         <h2 id="sim-title">Simulated AI development team</h2>
-        <p class="hint">Type an app idea. A scripted "team" discusses it in four roles: ChatGPT (Product Analyst), Claude (Lead Developer), Gemini (UX &amp; Design Reviewer) and Grok (Risk Reviewer). The text is generated locally by this page from your idea using fixed rules and templates. No real AI service is connected, and none of these assistants actually took part.</p>
-        <label for="idea">Your app idea</label>
-        <input type="text" id="idea" maxlength="200" placeholder="Create an online invoice generator" autocomplete="off">
+        <p class="hint">Type an app idea and a scripted "team" discusses it in four roles: ChatGPT (Architect &amp; Reviewer), Claude (Lead Developer), Gemini (Design &amp; Innovation Reviewer) and Grok (Critical Reviewer). The text is generated locally by this page from your idea, focus and requirements using fixed rules and templates. No real AI service is connected, and none of these assistants actually took part.</p>
+        <div class="two">
+          <div>
+            <label for="idea">Your app idea</label>
+            <input type="text" id="idea" maxlength="200" placeholder="Create an online invoice generator" autocomplete="off">
+          </div>
+          <div>
+            <label for="focus">Discussion focus (optional)</label>
+            <select id="focus" class="wide">
+              <option value="general">General</option>
+              <option value="security">Security</option>
+              <option value="ux">User Experience</option>
+              <option value="performance">Performance</option>
+              <option value="features">Features</option>
+            </select>
+          </div>
+        </div>
+        <label for="extras">Additional requirements (optional, one per line)</label>
+        <textarea id="extras" rows="3" placeholder="Dark mode&#10;Export to PDF"></textarea>
+        <fieldset class="speed"><legend>Playback speed</legend>
+          <label><input type="radio" name="speed" value="slow"> Slow</label>
+          <label><input type="radio" name="speed" value="normal" checked> Normal</label>
+          <label><input type="radio" name="speed" value="fast"> Fast</label>
+        </fieldset>
         <div class="row">
           <button type="button" class="button primary" id="simStart">Start</button>
           <button type="button" class="button" id="simPause">Pause</button>
@@ -75,14 +96,28 @@
           <span class="progress" id="simProgress" role="status"></span>
         </div>
         <p class="formerr" id="simError" role="alert"></p>
+        <div class="cont">
+          <label for="contReq">Continue the discussion with a new requirement</label>
+          <div class="row">
+            <input type="text" id="contReq" maxlength="120" placeholder="For example: add a search box" autocomplete="off">
+            <button type="button" class="button" id="contBtn">Continue Discussion</button>
+          </div>
+          <p class="hint">Works while the team is talking or after it finishes. Points not reached yet are dropped and re-planned around the new requirement.</p>
+        </div>
       </section>
-      <section aria-label="Simulated team members"><div class="grid4" id="simPanels"></div></section>
+      <section aria-label="Simulated team members" id="simPanelsWrap"><div class="grid4" id="simPanels"></div></section>
       <section class="panel" aria-labelledby="simfeed-title">
         <h2 id="simfeed-title">Simulated team meeting</h2>
         <ul class="feed" id="simFeed" aria-live="polite"></ul>
       </section>
       <section class="panel" id="result" aria-labelledby="result-title" hidden>
-        <h2 id="result-title">Final result</h2>
+        <div class="panel-heading"><h2 id="result-title">Final result</h2>
+          <div class="row tight">
+            <button type="button" class="button small primary" id="expMd">Export Markdown (.md)</button>
+            <button type="button" class="button small primary" id="expJson">Export JSON (.json)</button>
+            <button type="button" class="button small" id="copyMd">Copy Markdown</button>
+          </div>
+        </div>
         <div id="resultBody"></div>
       </section>
     </div>
@@ -96,6 +131,7 @@
     <footer><span>RENOVA OFFICE</span><span>Renewing the Way You Work.</span></footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="starter.js"></script>
   <script src="simulation.js"></script>
   <script src="app.js" defer></script>
 </body>

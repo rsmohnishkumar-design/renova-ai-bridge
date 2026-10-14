@@ -113,3 +113,25 @@ pre.code{background:#0b1322;border:1px solid var(--line);border-radius:10px;padd
 details{margin-top:8px}summary{cursor:pointer;color:var(--accent);padding:6px 0}
 .modepill{max-width:100%}
 @media(max-width:1000px){.feed{max-height:none;overflow:visible}}
+
+/* ---- v4: focus, speed, continue, tabs, status badges ---- */
+select.wide{width:100%;min-height:44px;font-size:15px;padding:8px 10px}
+.speed{border:0;padding:0;margin:14px 0 0}.speed legend{font-size:13px;font-weight:700;color:#c9d4e6;padding:0;margin-bottom:6px}
+.speed label{display:inline-flex;align-items:center;gap:6px;margin:0 16px 0 0;font-weight:400;min-height:36px}
+.cont{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}.cont .row>input{flex:1 1 220px}.cont .row>button{flex:0 0 auto}
+.role-summary{margin:0 0 10px;font-size:13px;color:var(--muted)}
+.phase.decision{color:var(--accent);border-color:var(--accent)}
+.st{font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.st.implemented{color:#86efac;border-color:#86efac66}.st.not-implemented{color:var(--orange);border-color:#ffc58b88}.st.deferred,.st.no-starter,.st.not-discussed{color:var(--muted)}
+.tabs{display:none;gap:6px;margin:0 0 12px}
+.tab{flex:1 1 0;min-height:44px;padding:8px 6px;border-radius:10px;border:1px solid #4a5d7a;background:#ffffff0d;color:var(--text);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.tab[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#0b1724}
+@media(max-width:720px){
+  .tabs{display:flex}
+  .grid4>.ai{display:none}.grid4>.ai.active{display:block}
+  .speed label{margin-right:10px}
+  .cont .row>button{flex:1 1 100%}
+  .row .button{flex:1 1 calc(50% - 10px)}
+  .progress{flex:1 1 100%}
+  .preview{height:420px}
+}
