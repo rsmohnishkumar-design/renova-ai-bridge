@@ -1,0 +1,11 @@
+{
+  "name": "renova-ai-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Renova AI Bridge: static control room for manual AI relay and a clearly labelled simulation. No dependencies; tests need Playwright only for the UI suite.",
+  "scripts": {
+    "test": "node test-simulation.js && node test-ui.js",
+    "test:engine": "node test-simulation.js",
+    "test:ui": "node test-ui.js"
+  }
+}
